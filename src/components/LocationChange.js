@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 
 class LocationChange extends Component{
     constructor(props){
@@ -11,6 +11,7 @@ class LocationChange extends Component{
     
     onCityChange = (event) =>{
         this.setState({city: event.target.value})
+        console.log(event.target.value)
     }
 
     onStateChange = (event) =>{
@@ -29,23 +30,26 @@ class LocationChange extends Component{
           city: this.state.city, 
           country: this.state.country,
           zip: this.state.zip, 
-        })
-        fetch('%PUBLIC_URL%/dashboard',{
-          method:'get',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({
-            state: this.state.state,
-            city: this.state.city, 
-            country: this.state.country,
-            zip: this.state.zip 
-          })
-        })
-        .then(response => {
-          if (response){
-            this.setState({})
-          }
-        })
-        .catch(err => console.log(err))
+        });
+        // fetch('%PUBLIC_URL%/dashboard',{
+        //     method:'post',
+        //     headers: {'Content-Type': 'application/json'},
+        //     body: JSON.stringify({
+        //       state: this.state.state,
+        //       city: this.state.city, 
+        //       country: this.state.country,
+        //       zip: this.state.zip 
+        //     })
+        //   })
+        // .then(response => {
+        //     if (response){
+        //         console.log("response", response)
+        //         this.setState({route: 'home'})
+        //     }
+        //   })
+        
+        this.props.onRouteChange('home')
+        // .catch(err => console.log(err))
     }
 
     render(){
@@ -61,17 +65,17 @@ class LocationChange extends Component{
                                 <h5 className="text-center">Enter your desired city, state, and country</h5>
                                 <div className="mb-3 text-start">
                                     <label htmlFor="city" className="form-label ">City</label>
-                                    <input type="text" className="form-control" id="city" aria-describedby="cityHelp" placeholder="Seattle"></input>
+                                    <input type="text" className="form-control" id="city" aria-describedby="cityHelp" placeholder="Seattle" onChange={this.onCityChange}></input>
                                     <div id="cityHelp" className="form-text">Please capitalize the first letter of each word</div>
                                 </div>
                                 <div className="mb-3 text-start">
                                     <label htmlFor="state" className="form-label">State</label>
-                                    <input type="text" className="form-control" id="state" aria-describedby="stateHelp" placeholder="WA"></input>
+                                    <input type="text" className="form-control" id="state" aria-describedby="stateHelp" placeholder="WA" onChange={this.onStateChange}></input>
                                     <div id="stateHelp" className="form-text">Please capitalize the first letter of each word</div>
                                 </div>
                                 <div className="mb-3 text-start">
                                     <label className="form-label" htmlFor="country">Country</label>
-                                    <input type="text" className="form-control" id="country" aria-describedby="countryHelp" defaultValue="US" placeholder="US" required></input>
+                                    <input type="text" className="form-control" id="country" aria-describedby="countryHelp" defaultValue="US" placeholder="US" required onChange={this.onCountryChange}></input>
                                     <div id="countryHelp" className="form-text">If you are searching for a location in the US, leave this field as "US". If you would like to search outside of the US, please use <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO 3166</a> country codes for this field. Capitalize both/all letters.</div>
                                 </div>
                                 <hr></hr>
@@ -80,17 +84,15 @@ class LocationChange extends Component{
                                 <p className="text-center small">This is the better way to search because some smaller towns and cities may not be in the system</p>
                                 <div className="mb-3 text-start">
                                     <label className="form-label" htmlFor="zipcode">Zipcode</label>
-                                    <input type="text" className="form-control" id="zipcode" aria-describedby="zipHelp" placeholder="98101"></input>
+                                    <input type="text" className="form-control" id="zipcode" aria-describedby="zipHelp" placeholder="98101" onChange={this.onZipChange}></input>
                                     <div id="zipHelp" className="form-text">Five digit zipcode. If this is for a country other than the US, you will need to enter the ISO 3166 code in the country field above</div>
                                 </div>
-                                <button type="submit" className="btn btn-success mx-auto">Enter</button>
+                                <button  className="btn btn-success mx-auto" onClick={this.onButtonSubmit}>Enter</button>
                             </form>
                         </div>
                     </div>
                 </div>
-                
             </div>
-            
         )
     }
 }

@@ -48,19 +48,14 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <LocationChange />
-
-        {/* <h1>Hi</h1> */}
-        {/* {this.getCurrentWeather("Seattle","WA")} */}
-        {/* { route === 'home' ? 
-            <div>
-              
-            </div>:
-            (
-              route === 'newLocation' ? 
-                
-            )
-          }  */}
+        { this.state.route === 'home' ? 
+          <div>
+            <h1 className="text-white">Hello</h1>
+          </div>:
+          <div>
+            <LocationChange onRouteChange={this.onRouteChange}/>  
+          </div>
+        }
       </div>
     );
   }  
