@@ -5,6 +5,7 @@ import LocationChange from './components/LocationChange';
 const { APIKEY }  = process.env;
 
 const initialState = {
+  route: 'newLocation',
   state: '',
   city: '',
   country: '',
@@ -30,38 +31,13 @@ class App extends Component {
   //   })
   // }
 
-  onInputChange = (event) => {
-    this.setState({input: event.target.value})
-  }
-
   onRouteChange = (route)  => {
     if (route === 'newLocation'){
       this.setState({initialState})
-    } else if (route === 'home'){
-      this.setState({isSignedIn:true})
-    }
+    } 
     this.setState({route: route})
   }
 
-  onButtonSubmit = () => {
-    this.setState({
-      state: this.state.state,
-      city: this.state.city, 
-      country: this.state.country,
-      zip: this.state.zip 
-    })
-    fetch('%PUBLIC_URL%/dashboard',{
-      method:'get',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        state: this.state.state,
-        city: this.state.city, 
-        country: this.state.country,
-        zip: this.state.zip 
-      })
-    })
-    .catch(err => console.log(err))
-  }
   // const [location, setLocation] = useState({
   //   lon: 0,
   //   lat: 0, 
