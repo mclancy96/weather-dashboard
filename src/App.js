@@ -2,12 +2,10 @@ import './App.css';
 // import Current from './components/Current.js';
 import React, { Component } from 'react';
 import LocationChange from './components/LocationChange';
-const { APIKEY }  = process.env;
+const SERVER_URL = "http://localhost:3002"
 
 const initialState = {
   route: 'newLocation',
-  state: '',
-  city: '',
   country: '',
   lat: '',
   lon: '',
@@ -20,37 +18,33 @@ class App extends Component {
     this.state = initialState
   }
 
-  // setLocation = (city, state, country="US", lat, lon, zip) => {
-  //   this.setState({
-  //     state: state,
-  //     city: city, 
-  //     country: country,
-  //     lat: lat,
-  //     lon: lon,
-  //     zip: zip  
-  //   })
-  // }
+  componentDidMount(){
+    fetch(SERVER_URL)
+    .then(response => console.log('Waking up server: ', response.status))
+  }
 
   onRouteChange = (route)  => {
     if (route === 'newLocation'){
       this.setState({initialState})
     } 
     this.setState({route: route})
+    // fetch(`${SERVER_URL}/dashboard`,{
+    //   method:'POST',
+    //   body: JSON.stringify({
+    //     zip: this.state.zip,
+    //     country: this.state.county
+    //   })
+    // }).then(response => {console.log(response.body, "response")})
+    
   }
 
-  // const [location, setLocation] = useState({
-  //   lon: 0,
-  //   lat: 0, 
-  //   city: '',
-  //   state: '',
-  //   country: ''
-  // }) 
   render(){
     return (
       <div className="App">
         { this.state.route === 'home' ? 
-          <div>
+          <div className="container-md">
             <h1 className="text-white">Hello</h1>
+
           </div>:
           <div>
             <LocationChange onRouteChange={this.onRouteChange}/>  
