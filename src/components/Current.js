@@ -1,14 +1,13 @@
-import React from 'react';
+import React, {Component} from "react";
 
-const getCurrentWeather = (city, state, country="US") => {
-    fetch(`api.openweathermap.org/data/2.5/weather?q=Seattle,WA,${country}&appid=${process.env.APIKEY}`)
-    .then(response => response.json())
-    .then(data => console.log(data));
-}
-
-function Current(){
-    return (
-        <p>{getCurrentWeather("Seattle", "WA")}</p>
-    )
+class Current extends Component{
+    render(){
+        const {current} = this.props.weatherData
+        return (
+            <div>
+                
+            </div>
+        )
+    }
 }
 export default Current;
