@@ -41,13 +41,13 @@ class App extends Component {
     this.setState({route: route})    
   }
   componentDidMount(){
-    fetch(process.env.SERVER_URL)
+    fetch(process.env.REACT_APP_SERVER_URL)
     .then(response => console.log('Waking up server: ', response.status));
   }
   render(){
     return (  
       <div className="App">
-        {console.log(process.env.SERVER_URL)}
+        {console.log(process.env.REACT_APP_SERVER_URL)}
 
         { this.state.route === 'home' ? 
           <div >
