@@ -8,8 +8,6 @@ import Hourly from './components/Hourly'
 import Daily from './components/Daily'
 import Header from './components/Header';
 
-const SERVER_URL = "http://localhost:3002"
-
 const initialState = {
   route: 'newLocation',
   country: '',
@@ -43,7 +41,7 @@ class App extends Component {
     this.setState({route: route})    
   }
   componentDidMount(){
-    fetch(SERVER_URL)
+    fetch(process.env.SERVER_URL)
     .then(response => console.log('Waking up server: ', response.status));
   }
 
