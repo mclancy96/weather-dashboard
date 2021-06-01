@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-require('dotenv').config();
 
 let alertValue = null;
 
