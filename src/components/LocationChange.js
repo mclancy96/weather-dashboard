@@ -1,15 +1,7 @@
 import React, { Component } from "react";
-const SERVER_URL = "http://localhost:3002"
-
+let alertValue = null;
 
 class LocationChange extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-          signInEmail: '',
-          signInPassword:''
-        }
-    }
     onCountryChange = (event) =>{
         this.setState({country: event.target.value})
     }
@@ -17,15 +9,14 @@ class LocationChange extends Component{
         this.setState({zip: event.target.value})
     }
     
-    onButtonSubmit =  async() => {
+    onButtonSubmit =  () => {
         let countryState = '';
         if (this.state.country === "" || this.state.country === undefined){
             countryState = 'US'
         } else {
             countryState = this.state.country;
         }
-        console.log("start of fetch")
-        let response = await fetch(SERVER_URL+"/dashboard", {
+        fetch(process.env.SERVER_URL+"/dashboard", {
           method: 'post',
           headers: {'Content-Type':'application/json'},
           body: JSON.stringify({
@@ -34,19 +25,29 @@ class LocationChange extends Component{
           })
         })
         .then(response => {
-            if (response.body){
-                this.props.onRouteChange('home')
-                this.setState({
-                    country: countryState,
-                    zip: this.state.zip,
-                    lat: response.body.lat,
-                    lon: response.body.lon 
-                });
-            } else {
+            if(response.status === 404){
+                alertValue = "The provided ZIP Code or country is invalid"
                 this.props.onRouteChange('newLocation')
+            } else if (response.status === 400){
+                alertValue = "An error occurred getting the weather data, please try again"
+                this.props.onRouteChange('newLocation')
+            } else if(response.status === 406){
+                alertValue = "The ZIP Code field was not filled in properly, please try again"
+                this.props.onRouteChange('newLocation')
+            } else if(response.status === 200){
+                alertValue = '';
+                return response.json()
             }
         })
-        
+        .then(data => {
+            if(data){
+                this.props.loadData(data)
+                this.props.onRouteChange('home')
+            }
+        })
+        .catch(error=>{
+            console.log(error)
+        })
     }
     render(){
         return(
@@ -58,6 +59,7 @@ class LocationChange extends Component{
                         </div>
                         <div className="modal-body">
                             <h5 className="text-center">Enter your desired ZIP code and country</h5>
+                            <small className="text-danger text-center"><em>{alertValue}</em></small>
                             <div className="mb-3 text-start">
                                 <label className="form-label" htmlFor="zipcode">Zipcode</label>
                                 <input type="text" className="form-control" id="zipcode" name="zipcode" aria-describedby="zipHelp" placeholder="98101" maxLength="5" onChange={this.onZipChange} pattern="[0-9]{5}" required></input>

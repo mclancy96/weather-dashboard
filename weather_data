@@ -1,0 +1,115 @@
+{
+    "loc": {
+        "lat": 39.9188,
+        "lon": -75.3991,
+        "timezone": "America/New_York",
+        "timezone_offset": -14400
+    },
+    "current": {
+        "clouds": 90,
+        "currentDow": "Monday"
+        "dew_point": 50.25,
+        "currentTime": "10:00:06 PM",
+        "currentDate": "5/24/2021",
+        "feels_like": 57.52,
+        "humidity": 74,
+        "pressure": 1024,
+        "sunrise": "5:39:25 AM",
+        "sunset": "8:17:50 PM",
+        "temp": 58.5,
+        "uvi": 0,
+        "visibility": 10000,
+        "wind_deg": 295,
+        "wind_gust": 7,
+        "wind_speed": 1.99,
+        "summary": {
+            "desc": "overcast clouds",
+            "icon": "04n",
+            "id": 804,
+            "main": "Clouds"
+        }
+    },
+    "minute": [
+        {
+            "minute": "10:01:00 PM",
+            "precip": 2.2408
+        },
+        {
+            "minute": "10:02:00 PM",
+            "precip": 0
+        },
+        {
+            "minute": "10:03:00 PM",
+            "precip": 0
+        },
+        ...
+    ],
+    "hour": [
+        {
+            "hour": "10:00:00 PM",
+            "temp": 58.5,
+            "feels_like": 57.52,
+            "pressure": 1024,
+            "humidity": 74,
+            "dew_point": 50.25,
+            "uvi": 0,
+            "clouds": 90,
+            "visibility": 10000,
+            "wind_speed": 7.23,
+            "wind_deg": 163,
+            "wind_gust": 10.87,
+            "summary": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "pop": 0
+        },
+        ...
+    ],
+    "daily": [
+        {
+            "date": "5/24/2021",
+            "dow": "Monday",
+            "sunrise": "5:39:25 AM",
+            "sunset": "8:17:50 PM",
+            "moonrise": "6:18:00 PM",
+            "moonset": "4:29:00 AM",
+            "moon_phase": 0.43,
+            "temp": {
+                "day": 67.78,
+                "min": 58.5,
+                "max": 72.54,
+                "night": 58.62,
+                "eve": 62.64,
+                "morn": 64.13
+            },
+            "feels_like": {
+                "day": 66.61,
+                "night": 57.47,
+                "eve": 61.29,
+                "morn": 63.01
+            },
+            "pressure": 1025,
+            "humidity": 50,
+            "dew_point": 48.49,
+            "wind_speed": 11.05,
+            "wind_deg": 16,
+            "wind_gust": 22.21,
+            "summary": {
+                "id": 804,
+                "main": "Clouds",
+                "description": "overcast clouds",
+                "icon": "04d"
+            },
+            "clouds": 100,
+            "pop": 0.65,
+            "rain": 3.79
+        },
+        ...
+    ],
+    "alerts": null
+}
