@@ -16,7 +16,7 @@ class LocationChange extends Component{
         } else {
             countryState = this.state.country;
         }
-        fetch(process.env.SERVER_URL+"/dashboard", {
+        fetch(process.env.SERVER_URL+"dashboard", {
           method: 'post',
           headers: {'Content-Type':'application/json'},
           body: JSON.stringify({
