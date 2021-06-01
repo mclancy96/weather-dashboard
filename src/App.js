@@ -44,10 +44,11 @@ class App extends Component {
     fetch(process.env.SERVER_URL)
     .then(response => console.log('Waking up server: ', response.status));
   }
-
   render(){
-    return (
+    return (  
       <div className="App">
+        {console.log(process.env.SERVER_URL)}
+
         { this.state.route === 'home' ? 
           <div >
             <Header weatherData={this.state.weatherData} locInfo={this.state.city} />
