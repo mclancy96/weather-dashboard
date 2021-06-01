@@ -7,6 +7,7 @@ import Minutely from './components/Minutely'
 import Hourly from './components/Hourly'
 import Daily from './components/Daily'
 import Header from './components/Header';
+require('dotenv').config();
 
 const initialState = {
   route: 'newLocation',
@@ -47,8 +48,6 @@ class App extends Component {
   render(){
     return (  
       <div className="App">
-        {console.log(process.env.REACT_APP_SERVER_URL)}
-
         { this.state.route === 'home' ? 
           <div >
             <Header weatherData={this.state.weatherData} locInfo={this.state.city} />
