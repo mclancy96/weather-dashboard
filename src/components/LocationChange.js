@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+require('dotenv').config();
+
 let alertValue = null;
 
 class LocationChange extends Component{
@@ -16,7 +18,7 @@ class LocationChange extends Component{
         } else {
             countryState = this.state.country;
         }
-        fetch(process.env.SERVER_URL+"dashboard", {
+        fetch(process.env.SERVER_URL +"dashboard", {
           method: 'post',
           headers: {'Content-Type':'application/json'},
           body: JSON.stringify({
