@@ -45,6 +45,10 @@ class App extends Component {
     .then(response => console.log('Waking up server: ', response.status));
   }
   render(){
+    let alerts = <div><h4 className='text-center'>Weather Alerts</h4><p className="text-center">No active weather alerts</p></div>;
+    if (this.state.weatherData.alerts !== null){
+      alerts = <Alert weatherData={this.state.weatherData}/>
+    }
     return (  
       <div className="App">
         { this.state.route === 'home' ? 
@@ -54,7 +58,7 @@ class App extends Component {
             <Minutely weatherData={this.state.weatherData}/>
             <Hourly weatherData={this.state.weatherData}/>
             <Daily weatherData={this.state.weatherData}/>
-            <Alert weatherData={this.state.weatherData}/>
+            {alerts}
           </div>:
           <div>
             <LocationChange onRouteChange={this.onRouteChange} loadData={this.loadData}/>  
