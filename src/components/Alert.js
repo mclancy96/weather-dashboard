@@ -3,7 +3,8 @@ import React, {Component} from "react";
 class Alert extends Component{
     render(){
         const {alerts} = this.props.weatherData; 
-        if(alerts && alerts[0].event){
+        console.log(alerts)
+        if(alerts && alerts[0]){
             let eventName = alerts.map((alt) => {return<td key={Math.random()+Math.random()}><strong>{alt.event}</strong></td>})
             let office = alerts.map((alt)=>{return<td key={Math.random()+Math.random()}>{alt.sender_name}</td>})            
             let starts = alerts.map((alt)=>{return<td key={Math.random()+Math.random()}>{alt.start}</td>})            
