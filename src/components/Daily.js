@@ -1,13 +1,6 @@
 import React, {Component} from "react";
 
 class Daily extends Component{
-    // getIcon(){
-    //     if(moon_phase_name === "Waxing Crescent"){
-    //         return 'https://img.icons8.com/metro/452/waxing-crescent.png';
-    //     } else if(moon_phase_name === "Waning Crescent"){
-    //         return 'https://img.icons8.com/metro/2x/waning-crescent.png'
-    //     }
-    // }
     render(){
         const {daily} = this.props.weatherData;        
         let days = daily.map((day) => {return <th key={Math.random()+Math.random()}>{day.dow.slice(0,3)} {day.date.slice(0,day.date.lastIndexOf('/'))}</th>})
@@ -16,7 +9,7 @@ class Daily extends Component{
         let mr = daily.map((day) => {return <td key={Math.random()+Math.random()}>{day.moonrise}</td>})
         let ms = daily.map((day) => {return <td key={Math.random()+Math.random()}>{day.moonset}</td>})
         let td = daily.map((day) => {let x = day.temp.day; return <td key={Math.random()+Math.random()} className={x>80&&x<=90?"text-warning":x>89&&x<=99?'text-danger':x>99?'text-purple':x<32?'text-primary':''}>{day.temp.day}°F</td>})
-        let tmin = daily.map((day) => {let x = day.temp.min; return <td key={Math.random()+Math.random()} className={x>80&&x<=90?"text-warning":x>89&&x<=99?'text-danger':x>99?'text-purple':x<32?'text-primary':''}>{day.temp.min}°F</td>})
+        let tmin = daily.map((day) => {let x = day.temp.min; return <td key={Math.random()+Math.random()} className={`${x>80&&x<=90?"text-warning":x>89&&x<=99?'text-danger':x>99?'text-purple':x<32?'text-primary':''}`}>{day.temp.min}°F</td>})
         let tmax = daily.map((day) => {let x = day.temp.max; return <td key={Math.random()+Math.random()} className={x>80&&x<=90?"text-warning":x>89&&x<=99?'text-danger':x>99?'text-purple':x<32?'text-primary':''}>{day.temp.max}°F</td>})
         let tn = daily.map((day) => {let x = day.temp.night; return <td key={Math.random()+Math.random()} className={x>80&&x<=90?"text-warning":x>89&&x<=99?'text-danger':x>99?'text-purple':x<32?'text-primary':''}>{day.temp.night}°F</td>})
         let te = daily.map((day) => {let x = day.temp.eve; return <td key={Math.random()+Math.random()} className={x>80&&x<=90?"text-warning":x>89&&x<=99?'text-danger':x>99?'text-purple':x<32?'text-primary':''}>{day.temp.eve}°F</td>})
@@ -40,7 +33,7 @@ class Daily extends Component{
             <div>
                 <h4 className='text-center'>Daily Forecast</h4>
                 <div className="table-responsive">
-                    <table className="text-center table table-dark table-bordered">
+                    <table className="text-center table table-dark table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th>Date</th>
