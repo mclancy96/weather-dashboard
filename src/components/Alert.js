@@ -3,11 +3,11 @@ import React, {Component} from "react";
 class Alert extends Component{
     render(){
         const {alerts} = this.props.weatherData; 
-        let details;
-        let eventName;
-        let office;
-        let starts;
-        let ends;
+        let details = '';
+        let eventName = '';
+        let office = '';
+        let starts = '';
+        let ends = '';
         if(alerts !== null){
             eventName = alerts.map((alt) => {return<td key={Math.random()+Math.random()}><strong>{alt.event}</strong></td>})
             office = alerts.map((alt)=>{return<td key={Math.random()+Math.random()}>{alt.sender_name}</td>})            
