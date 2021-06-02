@@ -7,7 +7,6 @@ import Minutely from './components/Minutely'
 import Hourly from './components/Hourly'
 import Daily from './components/Daily'
 import Header from './components/Header';
-require('dotenv').config();
 
 const initialState = {
   route: 'newLocation',

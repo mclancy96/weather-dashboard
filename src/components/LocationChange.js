@@ -17,7 +17,7 @@ class LocationChange extends Component{
         } else {
             countryState = this.state.country;
         }
-        fetch(process.env.REACT_APP_SERVER_URL +"dashboard", {
+        fetch(`${process.env.REACT_APP_SERVER_URL}dashboard`, {
           method: 'post',
           headers: {'Content-Type':'application/json'},
           body: JSON.stringify({
