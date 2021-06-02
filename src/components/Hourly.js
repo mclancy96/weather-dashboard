@@ -24,7 +24,7 @@ class Hourly extends Component{
         let cld = hour.map((hour) => {return <td key={Math.random()+Math.random()} className={endOfDaySet(hour.hour)}>{hour.clouds}%</td>})
         let sum = hour.map((hour) => {return <td key={Math.random()+Math.random()} className={endOfDaySet(hour.hour)}>{hour.summary[0].description}</td>})
         let icon = hour.map((hour) => {return <td key={Math.random()+Math.random()} className={endOfDaySet(hour.hour)}><img alt={`${hour.summary[0].description} condition`}src={`http://openweathermap.org/img/wn/${hour.summary[0].icon}.png`}></img></td>})
-        let pop = hour.map((hour) => {return <td key={Math.random()+Math.random()} className={endOfDaySet(hour.hour)}>{hour.pop*100}%</td>})
+        let pop = hour.map((hour) => {return <td key={Math.random()+Math.random()} className={endOfDaySet(hour.hour)}>{Math.round(hour.pop*100)}%</td>})
         return (
             <div>
                 <h4 className='text-center'>Hourly Forecast</h4>                

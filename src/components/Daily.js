@@ -28,7 +28,7 @@ class Daily extends Component{
         let cld = daily.map((day) => {return <td key={Math.random()+Math.random()}>{day.clouds}%</td>})
         let sum = daily.map((day) => {return <td key={Math.random()+Math.random()}>{day.summary.description}</td>})
         let icon = daily.map((day) => {return <td key={Math.random()+Math.random()}><img alt={`${day.summary.description} condition`}src={`http://openweathermap.org/img/wn/${day.summary.icon}.png`}></img></td>})
-        let pop = daily.map((day) => {return <td key={Math.random()+Math.random()}>{day.pop*100}%</td>})
+        let pop = daily.map((day) => {return <td key={Math.random()+Math.random()}>{Math.round(day.pop*100)}%</td>})
         return (
             <div>
                 <h4 className='text-center'>Daily Forecast</h4>
