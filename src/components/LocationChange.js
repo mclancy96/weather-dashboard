@@ -71,7 +71,7 @@ class LocationChange extends Component{
                                 <input type="text" className="form-control" id="country" aria-describedby="countryHelp" placeholder="US" onChange={this.onCountryChange}></input>
                                 <div id="countryHelp" className="form-text">If you are searching for a location in the US, leave this field blank. If you would like to search outside of the US, please use <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO 3166</a> country codes for this field. Capitalize both/all letters.</div>
                             </div>
-                            <div class="d-grid gap-2">                    
+                            <div className="d-grid gap-2">                    
                                 <button type="submit" className="btn btn-success mx-auto" onClick={this.onButtonSubmit}>Enter</button>
                             </div>
                         </div>
